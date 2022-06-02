@@ -1,0 +1,9 @@
+@use '../../style/main';
+
+.connection_view{
+    display: flex;
+    align-items: center;
+    background: main.$background;
+    height:48px;
+    border-bottom: main.$liner solid 1px;
+}

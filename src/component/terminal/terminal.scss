@@ -1,0 +1,22 @@
+@use '../../style/main';
+
+.terminal{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .title{
+        margin-left: 8px;
+        display: flex;
+        align-items: center;
+        height: 24px;
+    }
+
+    .text_area{
+        border: main.$liner solid;
+        border-width: 1px 0px 0px 0px;
+        flex-grow: 1;
+        resize: none;
+    }
+}
