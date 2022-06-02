@@ -55,30 +55,24 @@ export default function RosView(){
             <b>RosView</b>
             <br/>
             Linear<br/>
-            X <input value={msg.linear.x} onChange=
-            {(e)=> {
+            X <input value={msg.linear.x} onChange={(e)=> {
                 setMsg(prevState => {return {...prevState, linear: {...prevState.linear, x: +e.target.value}}})
             }}/>
-            Y <input value={msg.linear.y} onChange=
-            {(e)=> {
+            Y <input value={msg.linear.y} onChange={(e)=> {
                 setMsg(prevState => {return {...prevState, linear: {...prevState.linear, y: +e.target.value}}})
             }}/>
-            Z <input value={msg.linear.z} onChange=
-            {(e)=> {
+            Z <input value={msg.linear.z} onChange={(e)=> {
                 setMsg(prevState => {return {...prevState, linear: {...prevState.linear, z: +e.target.value}}})
             }}/>
             <br/>
             Angular<br/>
-            X <input value={msg.angular.x} onChange=
-            {(e)=> {
+            X <input value={msg.angular.x} onChange={(e)=> {
                 setMsg(prevState => {return {...prevState, angular: {...prevState.angular, x: +e.target.value}}})
             }}/>
-            Y <input value={msg.angular.y} onChange=
-            {(e)=> {
+            Y <input value={msg.angular.y} onChange={(e)=> {
                 setMsg(prevState => {return {...prevState, angular: {...prevState.angular, y: +e.target.value}}})
             }}/>
-            Z <input value={msg.angular.z} onChange=
-            {(e)=> {
+            Z <input value={msg.angular.z} onChange={(e)=> {
                 setMsg(prevState => {return {...prevState, angular: {...prevState.angular, z: +e.target.value}}})
             }}/>
             <br/>
