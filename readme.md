@@ -1,4 +1,4 @@
-# Electron Boilerplate
+# Electron-ROS Boilerplate
 
 Boilerplate for electron apps that interact with ROS
 
