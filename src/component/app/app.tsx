@@ -3,14 +3,8 @@ const Store = require('electron-store');
 import '../../style/flexlayout.scss'
 import * as FlexLayout from "flexlayout-react";
 import {IJsonModel, Layout} from "flexlayout-react";
-import ConnectionView from "../connectionView/connectionView";
-import Terminal from '../terminal/terminal'
 import './app.scss'
-import Plot from "../plot/plot";
-import ReadoutView from "../readout/readoutView";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../store/store";
-import layoutSlice, {setGlobalApp} from "../../store/layoutSlice";
+import RosView from "../rosView/rosView";
 
 const store = new Store();
 store.set('unicorn', '🦄');
@@ -34,60 +28,18 @@ export default class App extends Component {
             splitterExtra: 8,
             tabSetTabStripHeight: 24
         },
-        borders: [
-            {
-                type: "border",
-                location: "bottom",
-                selected: 0,
-                children: [
-                    {
-                        type: "tab",
-                        enableClose: false,
-                        name: "Terminal",
-                        component: "Terminal",
-                    }
-                ]
-            },
-            {
-                type: "border",
-                location: "left",
-                selected: 0,
-                children: [
-                    {
-                        type: "tab",
-                        enableClose: false,
-                        name: "Devices",
-                        component: "",
-                    }
-                ]
-            },
-            {
-                type: "border",
-                location: "right",
-                selected: 0,
-                children: [
-                    {
-                        type: "tab",
-                        enableClose: false,
-                        name: "Readouts",
-                        component: "Readout",
-                    }
-                ]
-            },
-        ],
         layout: {
             type: "row",
             weight: 100,
             children: [
                 {
                     type: "tabset",
-                    id:'PLOT',
                     weight: 30,
                     children: [
                         {
                             type: "tab",
-                            name: "Welcome",
-                            component: "??",
+                            name: "Electron-ROS Boilerplate",
+                            component: "RosView",
                         }
                     ]
                 },
@@ -104,25 +56,12 @@ export default class App extends Component {
         super(props);
         this.state = {model: FlexLayout.Model.fromJson(this.layout)}
         this.layoutRef = React.createRef();
-
-        setGlobalApp(this)
     }
 
     private factory(node : any) {
         const component = node.getComponent();
-        if (component === "Terminal") {
-            return (<Terminal/>);
-        }
-        if (component === "ConnectionView") {
-            return (<ConnectionView/>);
-        }
-        if (component.startsWith('Plot')) {
-            // plot component string format: 'Plot <id>'
-            const id = component.split(' ')[1]
-            return (<Plot id={+id}/>);
-        }
-        if (component === "Readout") {
-            return (<ReadoutView/>);
+        if (component === "RosView") {
+            return (<RosView/>);
         }
     }
 
@@ -133,7 +72,6 @@ export default class App extends Component {
     public render() {
         return (
             <div className={'app'}>
-                <ConnectionView></ConnectionView>
                 <FlexLayout.Layout
                     ref={this.layoutRef}
                     model={this.state.model}
